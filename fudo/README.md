@@ -1,11 +1,4 @@
-# Express + MongoDB
-
-This app requires a MongoDB instance running!
-
-Run MongoDB from the folder with
-```
-  mongod --dbpath ./data
-```
+# These are some random edits that I am adding lol
 
 Don't forget to `npm install`!
 
