@@ -22,25 +22,6 @@ body {
     font-family: sans-serif;
 }
 
-div.content {
-    height: 78vh;
-    width: 650px;
-    position: fixed;
-    top: 16vh;
-    left: calc(50vw - 325px);
-    background-color: rgba(255, 255, 255, .75);
-    overflow: auto;
-    border-radius: 10px;
-    padding: 25px;
-}
-
-div.post {
-    background-color: skyblue;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-}
-
 li {
     display: inline-block;
 }

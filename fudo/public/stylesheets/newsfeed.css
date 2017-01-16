@@ -1,0 +1,9 @@
+div.newsfeed {
+    position: absolute;
+    width: 50%;
+    right: 12.5%;
+    background-color: rgba(255, 255, 255, .75);
+    overflow: auto;
+    border-radius: 10px;
+    padding: 25px;
+}
