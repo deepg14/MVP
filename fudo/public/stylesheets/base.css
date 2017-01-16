@@ -15,14 +15,14 @@ html {
 
 body {
     background-color: #515A6B;
-    background-image: url("../images/background.png");
+    background-image: url("../images/bluepurple.jpg");
     background-size: cover;
     background-position: center 100%;
     background-repeat: no-repeat;
     font-family: sans-serif;
 }
 
-h1.workshop-name {
+h1.site-name {
     color: white;
     font-family: 'helvetica neue', arial, sans-serif;
     font-weight: normal;

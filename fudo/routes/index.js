@@ -7,7 +7,11 @@ var User = require('../schemas/user');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Rendering the index view with the title 'Sign Up'
-  context = {title: 'fudo'};
+  var context = {
+    title: 'fudo',
+    postTitle: 'Deep rocks!',
+    postContent: 'Ha, Sunny is better. :)'
+  };
   res.render('index', context);
 });
 
