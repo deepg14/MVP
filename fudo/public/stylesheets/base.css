@@ -22,15 +22,6 @@ body {
     font-family: sans-serif;
 }
 
-h1.site-name {
-    color: white;
-    font-family: 'helvetica neue', arial, sans-serif;
-    font-weight: normal;
-    margin-top: 6vh;
-    margin-left: calc(50vw - 325px);
-    font-size: 2.25em;
-}
-
 div.content {
     height: 78vh;
     width: 650px;
@@ -41,6 +32,17 @@ div.content {
     overflow: auto;
     border-radius: 10px;
     padding: 25px;
+}
+
+div.post {
+    background-color: skyblue;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+li {
+    display: inline-block;
 }
 
 img.sonde {

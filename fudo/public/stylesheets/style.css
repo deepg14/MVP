@@ -2,15 +2,22 @@ h1 {
 	margin: 10px 0;
 	font-size: 2em;
 }
-ul {
-	width: 250px;
-	background-color: #ffffff;
-	margin: 10px 0;
-	padding: 10px;
-	border: black solid 1pt;
-	list-style-type: none;
+
+h2 {
+	margin: .1em;
+	font-size: 1em;
 }
-li{
+
+h3 {
+	margin: .1em;
+	font-size: .9em;
+}
+
+div.navbar ul {
+	float: right;
+}
+
+li {
 	font-weight: bold;
 	margin: 10px;
 }
