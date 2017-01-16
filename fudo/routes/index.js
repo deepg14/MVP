@@ -7,7 +7,8 @@ var User = require('../schemas/user');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Rendering the index view with the title 'Sign Up'
-  res.render('index', {title: 'Sign Up'});
+  context = {title: 'fudo'};
+  res.render('index', context);
 });
 
 /* GET userlist JSON */
