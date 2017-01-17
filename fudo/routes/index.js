@@ -4,15 +4,41 @@ var router = express.Router();
 // get the User model
 var User = require('../schemas/user');
 
+// get the Post model
+var Post = require('../schemas/post');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // Rendering the index view with the title 'Sign Up'
-  var context = {
-    title: 'fudo',
-    postTitle: 'Deep rocks!',
-    postContent: 'Ha, Sunny is better. :)'
-  };
-  res.render('index', context);
+  // Rendering the index view 
+  Post.find({}, function(err, posts) {
+    var context = {
+      title: 'fudo',
+      posts
+    };
+    res.render('index', context);
+  });
+  
+});
+
+/* POST to addpost */
+router.post('/addpost', function(req, res, next) {
+  var postTitle = req.body.postTitle;
+  var postAuthor = req.body.postAuthor;
+
+  // TODO: Create a new document with the given username and favorite fruit.
+  // If the username already exists, then do nothing.
+
+  var newPost = new Post({
+     'postTitle': postTitle,
+     'postAuthor': postAuthor
+  });
+    
+  newPost.save();
+    
+  console.log('\n\nNew post added!\n\n');
+
+  // Redirecting back to the root
+  res.redirect('/');
 });
 
 /* GET userlist JSON */

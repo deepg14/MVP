@@ -1,5 +1,20 @@
 <div class="newsfeed">
-  {{> post }}
+  <form name="addpost" method="post" action="/addpost">
+    <ul>
+      <li>Post Title</li>
+
+      <li><input type="text" placeholder="Title" name="postTitle"></li>
+
+      <li>Post Author</li>
+
+      <li><input type="text" placeholder="Author" name="postAuthor"></li>
+
+      <li><button type="submit">Submit</button></li>      
+    </ul>
+  </form>
+  {{#each posts}} 
+    {{> post }}
+  {{/each}}
   <form name="adduser" method="post" action="/adduser">
     <ul>
       <li>Username</li>
