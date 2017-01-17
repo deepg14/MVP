@@ -13,11 +13,7 @@ h3 {
 	font-size: .9em;
 }
 
-div.navbar ul {
-	float: right;
-}
-
-li {
+div.newsfeed li {
 	font-weight: bold;
 	margin: 10px;
 }
