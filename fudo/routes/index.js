@@ -8,17 +8,22 @@ var User = require('../schemas/user');
 // get the Post model
 var Post = require('../schemas/post');
 
+var isLoggedIn = false;
+
 var isAuthenticated = function (req, res, next) {
   console.log(chalk.cyan('\n\nisAuthenticated method accessed.\n\n'));
   // if user is authenticated in the session, call the next() to call the next request handler 
   // Passport adds this method to re puest object. A middleware is allowed to add properties to
   // request and response objects
+
   if (req.isAuthenticated()) {
     console.log('\n\nUser is authenticated.\n\n');
+    isLoggedIn = true;
     return next();
   }
   // if the user is not authenticated then redirect him to the login page
   console.log('\n\nRedirected to login.\n\n');
+  isLoggedIn = false;
   res.redirect('/login');
 }
 
@@ -27,12 +32,14 @@ module.exports = function(passport){
   /* GET index page. */
   router.get('/', isAuthenticated, function(req, res) {
     console.log(chalk.yellow('\nIndex page accessed.\n'));
+    console.log(chalk.yellow(isLoggedIn));
     // Display the index page with any flash message, if any
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
        posts,
-       message: req.flash('message')
+       message: req.flash('message'),
+       isLoggedIn
      };
      res.render('index', context);
     });
@@ -46,7 +53,8 @@ module.exports = function(passport){
      var context = {
        title: 'fudo',
        posts,
-       message: req.flash('message')
+       message: req.flash('message'),
+       isLoggedIn
      };
      res.render('login', context);
     });
@@ -66,7 +74,8 @@ module.exports = function(passport){
      var context = {
        title: 'fudo',
        posts,
-       message: req.flash('message')
+       message: req.flash('message'),
+       isLoggedIn
      };
      res.render('register', context);
     });
@@ -84,6 +93,21 @@ module.exports = function(passport){
     console.log(chalk.yellow('\nLogout.\n'));
     req.logout();
     res.redirect('/');
+  });
+
+  /* GET MyProfiile page. */
+  router.get('/myprofile', isAuthenticated, function(req, res) {
+    console.log(chalk.yellow('\nProfile page accessed.\n'));
+    // Display the index page with any flash message, if any
+    Post.find({}, function(err, posts) {
+     var context = {
+       title: 'fudo',
+       posts,
+       message: req.flash('message'),
+       isLoggedIn
+     };
+     res.render('myprofile', context);
+    });
   });
 
   return router;
