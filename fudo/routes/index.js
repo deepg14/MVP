@@ -11,6 +11,12 @@ router.get('/', function(req, res, next) {
   res.render('index', context);
 });
 
+router.get('/home', function(req, res, next) {
+  // Rendering the index view with the title 'Sign Up'
+  context = {title: 'fudo'};
+  res.render('home', context);
+});
+
 /* GET userlist JSON */
 router.get('/userlist', function(req, res, next) {
   // Passing in an empty object to User.find() will return a list of

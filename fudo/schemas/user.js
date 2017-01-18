@@ -8,7 +8,6 @@ var userSchema = new mongoose.Schema({
 	username: String,
 	userFruit: String
 });
-
 //
 
 // var userSchema = null;
