@@ -8,6 +8,7 @@ var User = require('../schemas/user');
 // get the Post model
 var Post = require('../schemas/post');
 
+// tells whether a user is logged in or not, should be updated on each call to a page
 var isLoggedIn = false;
 
 var isAuthenticated = function (req, res, next) {
