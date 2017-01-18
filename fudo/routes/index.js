@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var chalk = require('chalk');
 
 // get the User model
 var User = require('../schemas/user');
@@ -8,9 +9,9 @@ var User = require('../schemas/user');
 var Post = require('../schemas/post');
 
 var isAuthenticated = function (req, res, next) {
-  console.log('\n\nisAuthenticated method accessed.');
+  console.log(chalk.cyan('\n\nisAuthenticated method accessed.\n\n'));
   // if user is authenticated in the session, call the next() to call the next request handler 
-  // Passport adds this method to request object. A middleware is allowed to add properties to
+  // Passport adds this method to re puest object. A middleware is allowed to add properties to
   // request and response objects
   if (req.isAuthenticated()) {
     console.log('\n\nUser is authenticated.\n\n');
@@ -24,7 +25,8 @@ var isAuthenticated = function (req, res, next) {
 module.exports = function(passport){
 
   /* GET index page. */
-  router.get('/', function(req, res) {
+  router.get('/', isAuthenticated, function(req, res) {
+    console.log(chalk.yellow('\nIndex page accessed.\n'));
     // Display the index page with any flash message, if any
     Post.find({}, function(err, posts) {
      var context = {
@@ -38,6 +40,7 @@ module.exports = function(passport){
 
   /* GET login page. */
   router.get('/login', function(req, res) {
+    console.log(chalk.yellow('\nLogin page accessed.\n'));
     // Display the Login page with any flash message, if any
     Post.find({}, function(err, posts) {
      var context = {
@@ -58,6 +61,7 @@ module.exports = function(passport){
 
   /* GET Registration Page */
   router.get('/signup', function(req, res){
+    console.log(chalk.yellow('\nSignup page accessed.\n'));
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
@@ -77,6 +81,7 @@ module.exports = function(passport){
 
   /* Handle Logout */
   router.get('/logout', function(req, res) {
+    console.log(chalk.yellow('\nLogout.\n'));
     req.logout();
     res.redirect('/');
   });
