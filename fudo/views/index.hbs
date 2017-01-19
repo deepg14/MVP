@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/base.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/navbar.css' />
-    <link rel='stylesheet' href='/stylesheets/post.css' />
-    <link rel='stylesheet' href='/stylesheets/side.css' />
-    <link rel='stylesheet' href='/stylesheets/newsfeed.css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/js/ajax.js"></script>
-  </head>
-  <body>
-    {{> navbar }}
-    {{> side}}
-    {{> newsfeed}}   
-  </body>
-</html>
+{{#if isLoggedIn}} 
+{{> newsfeed }}
+{{/if}}
+{{#unless isLoggedIn}}
+{{> home }}
+{{/unless}}
