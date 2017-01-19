@@ -26,10 +26,15 @@
           <div class="inner">
             <h3 class="masthead-brand">fudo</h3>
             <nav class="nav nav-masthead">
-              <a class="nav-link active" href="#">Home</a>
-              <a class="nav-link" href="#">Discover</a>
-              <a class="nav-link" href="#">Share</a>
-              <a class="nav-link" href="#">Profile</a>
+              <!--<a class="nav-link active" href="#">Home</a>-->
+              <a class="nav-link" href="/newsfeed">Discover</a>
+              {{#unless isLoggedIn}}
+              <a href="/login">Login</a>
+              {{/unless}}
+              {{#if isLoggedIn}}
+              <a href="/myprofile">My Profile</a>
+              <a href="/logout">Logout</a>
+              {{/if}} 
             </nav>
           </div>
         </div>

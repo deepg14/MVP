@@ -30,10 +30,9 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-  /* GET index page. */
-  router.get('/', isAuthenticated, function(req, res) {
-    console.log(chalk.yellow('\nIndex page accessed.\n'));
-    console.log(chalk.yellow(isLoggedIn));
+  /* GET home page. */
+  router.get('/', function(req, res) {
+    console.log(chalk.yellow('\nHome page accessed.\n'));
     // Display the index page with any flash message, if any
     Post.find({}, function(err, posts) {
      var context = {
@@ -42,15 +41,8 @@ module.exports = function(passport){
        message: req.flash('message'),
        isLoggedIn
      };
-     res.render('index', context);
+     res.render('home', context);
     });
-  });
-
-  /* GET home page */
-  router.get('/home', function(req, res, next) {
-  // Rendering the index view with the title 'Sign Up'
-    context = {title: 'fudo'};
-    res.render('home', context);
   });
 
   /* GET login page. */
@@ -103,7 +95,22 @@ module.exports = function(passport){
     res.redirect('/');
   });
 
-  /* GET MyProfiile page. */
+  /* GET newsfeed */
+  router.get('/newsfeed', function(req, res) {
+    console.log(chalk.yellow('\nNewsfeed accessed.\n'));
+    // Display the index page with any flash message, if any
+    Post.find({}, function(err, posts) {
+     var context = {
+       title: 'fudo',
+       posts,
+       message: req.flash('message'),
+       isLoggedIn
+     };
+     res.render('newsfeed', context);
+    });
+  });
+
+  /* GET MyProfile page. */
   router.get('/myprofile', isAuthenticated, function(req, res) {
     console.log(chalk.yellow('\nProfile page accessed.\n'));
     // Display the index page with any flash message, if any
