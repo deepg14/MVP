@@ -1,0 +1,22 @@
+div.newsfeed {
+  width: 50%;
+  position: absolute;
+  right: 11.5%;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 10px;
+  overflow: auto;
+  padding: 25px;
+  margin: 5px;
+}
+
+form.addpost {
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 5px;
+}
+
+form.addpost li {
+	font-size: .8em;
+	display: block;
+}

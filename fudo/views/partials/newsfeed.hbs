@@ -1,0 +1,50 @@
+<div class="newsfeed">
+
+  <form name="addpost" method="post" action="/addpost" class="addpost">
+
+    <ul>
+      <li>Post Title</li>
+      <li><input type="text" placeholder="Title" name="postTitle"></li>
+      <li>Post Author</li>
+      <li><input type="text" placeholder="Author" name="postAuthor"></li>
+      <li><button type="submit">Submit</button></li>
+    </ul>
+
+  </form>
+
+  {{#each posts}} 
+    {{> post }}
+  {{/each}}
+
+<!--   <form name="adduser" method="post" action="/adduser">
+    <ul>
+      <li>Username</li>
+
+      <li><input type="text" placeholder="Username" name="username"></li>
+
+      <li>Favorite Fruit</li>
+
+      <li><input type="text" placeholder="Favorite Fruit" name="userfruit"></li>
+
+      <li><button type="submit">Submit</button></li>      
+    </ul>
+  </form>
+  <form name="deleteuser" method="post" action="/deleteuser">
+    <ul>
+      <li>User to Delete</li>
+
+      <li><input type="text" placeholder="Username" name="username"></li>
+
+      <li><button type="submit">Submit</button></li>
+    </ul>
+  </form>
+
+  <ul>
+    <li>User to Find</li>
+    <li><input type="text" placeholder="Username" class="find"></li>
+    <li><button type="submit" class="find-submit">Submit</button></li>
+    <li><p class="find-output"></p></li>
+  </ul>
+
+  <a href="/userlist">See userlist</a>
+</div> -->

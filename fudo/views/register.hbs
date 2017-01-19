@@ -13,7 +13,17 @@
   </head>
   <body>
     {{> navbar }}
-    {{> side}}
-    {{> newsfeed}}   
+    {{> side}} 
+    <div class='newsfeed'>
+    <form name="signup" method="post" action="/signup">
+      <ul>
+        <li>Username</li>
+        <li><input type="text" placeholder="Username" name="username"></li>
+        <li>Password</li>
+        <li><input type="text" placeholder="Password" name="password"></li>
+        <li><button type="submit">Submit</button></li>      
+      </ul>    
+    </form>
+    </div>
   </body>
 </html>

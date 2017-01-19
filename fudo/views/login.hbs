@@ -13,7 +13,19 @@
   </head>
   <body>
     {{> navbar }}
-    {{> side}}
-    {{> newsfeed}}   
+    {{> side}} 
+    <div class='newsfeed'>
+    <form name="login" method="post" action="/login">
+      <h1>You must first log in to access that page!</h1>
+      <ul>
+        <li>Username</li>
+        <li><input type="text" placeholder="Username" name="username"></li>
+        <li>Password</li>
+        <li><input type="text" placeholder="Password" name="password"></li>
+        <li><button type="submit">Submit</button></li>    
+        <li><a href="/signup">Create an Account</a></li>  
+      </ul>    
+    </form>
+    </div>
   </body>
 </html>
