@@ -133,7 +133,8 @@ module.exports = function(passport){
        title: 'fudo',
        posts,
        message: req.flash('message'),
-       isLoggedIn
+       isLoggedIn,
+       username: req.user.username
      };
      res.render('myprofile', context);
     });
