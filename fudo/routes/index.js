@@ -17,6 +17,12 @@ router.get('/home', function(req, res, next) {
   res.render('home', context);
 });
 
+router.get('/signin', function(req, res, next) {
+  // Rendering the index view with the title 'Sign Up'
+  res.send("<form method='post' action='/login'> <div><input name='username'></div><div><input name='password'></div>")
+  res.render('signin', context);
+});
+
 /* GET userlist JSON */
 router.get('/userlist', function(req, res, next) {
   // Passing in an empty object to User.find() will return a list of
