@@ -55,7 +55,12 @@ module.exports = function(passport){
        message: req.flash('message'),
        isLoggedIn
      };
-     res.render('home', context);
+     if (isLoggedIn) {
+      res.render('newsfeed', context);
+     }
+     else {
+      res.render('home', context);
+     }
     });
   });
 
@@ -76,7 +81,7 @@ module.exports = function(passport){
 
   /* Handle Login POST */
   router.post('/login', passport.authenticate('login', {
-    successRedirect: '/newsfeed',
+    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash : true  
   }));
@@ -155,7 +160,7 @@ module.exports = function(passport){
     console.log('\n\nNew post added!\n\n');
 
     // Redirecting back to the root
-    res.redirect('/newsfeed');
+    res.redirect('/');
   });
 
   return router;
