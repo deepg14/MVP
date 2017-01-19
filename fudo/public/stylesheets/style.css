@@ -2,15 +2,8 @@ h1 {
 	margin: 10px 0;
 	font-size: 2em;
 }
-ul {
-	width: 250px;
-	background-color: #ffffff;
-	margin: 10px 0;
-	padding: 10px;
-	border: black solid 1pt;
-	list-style-type: none;
-}
-li{
+
+div.newsfeed li {
 	font-weight: bold;
 	margin: 10px;
 }
