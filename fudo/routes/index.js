@@ -111,6 +111,27 @@ module.exports = function(passport){
     });
   });
 
+  /* POST to addpost */
+  router.post('/addpost', function(req, res, next) {
+    var postTitle = req.body.postTitle;
+    var postAuthor = req.body.postAuthor;
+
+    // TODO: Create a new document with the given username and favorite fruit.
+    // If the username already exists, then do nothing.
+
+    var newPost = new Post({
+      'postTitle': postTitle,
+      'postAuthor': postAuthor
+    });
+    
+    newPost.save();
+    
+    console.log('\n\nNew post added!\n\n');
+
+    // Redirecting back to the root
+    res.redirect('/');
+  });
+
   return router;
 
 }
