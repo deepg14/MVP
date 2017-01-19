@@ -49,18 +49,18 @@ module.exports = function(passport){
     console.log(chalk.yellow('\nHome page accessed.\n'));
     // Display the index page with any flash message, if any
     Post.find({}, function(err, posts) {
-     var context = {
-       title: 'fudo',
-       posts,
-       message: req.flash('message'),
-       isLoggedIn
-     };
-     if (isLoggedIn) {
+    var context = {
+      title: 'fudo',
+      posts,
+      message: req.flash('message'),
+      isLoggedIn
+    };
+    if (isLoggedIn) {
       res.render('newsfeed', context);
-     }
-     else {
+    }
+    else { 
       res.render('home', context);
-     }
+    }
     });
   });
 
@@ -119,13 +119,18 @@ module.exports = function(passport){
     console.log(chalk.yellow('\nNewsfeed accessed.\n'));
     // Display the index page with any flash message, if any
     Post.find({}, function(err, posts) {
-     var context = {
-       title: 'fudo',
-       posts,
-       message: req.flash('message'),
-       isLoggedIn
-     };
-     res.render('newsfeed', context);
+      var context = {
+        title: 'fudo',
+        posts,
+        message: req.flash('message'),
+        isLoggedIn
+      };
+      if (isLoggedIn) {
+        res.redirect('/');
+      }
+      else {
+        res.render('newsfeed', context);
+      } 
     });
   });
 
