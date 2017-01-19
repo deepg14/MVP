@@ -55,7 +55,12 @@ module.exports = function(passport){
        message: req.flash('message'),
        isLoggedIn
      };
-     res.render('home', context);
+     if (isLoggedIn) {
+      res.render('newsfeed', context);
+     }
+     else {
+      res.render('home', context);
+     }
     });
   });
 
@@ -120,7 +125,12 @@ module.exports = function(passport){
        message: req.flash('message'),
        isLoggedIn
      };
-     res.render('newsfeed', context);
+     if (isLoggedIn) {
+      res.redirect('/');
+     }
+     else {
+      res.render('newsfeed', context);
+     }
     });
   });
 
@@ -134,7 +144,8 @@ module.exports = function(passport){
        posts,
        message: req.flash('message'),
        isLoggedIn,
-       username: req.user.username
+       username: req.user.username,
+       name: req.user.name
      };
      res.render('myprofile', context);
     });
