@@ -107,7 +107,7 @@ body {
   height:100%;
   font: normal;
   font-family: normal;
-  background-image: url("../images/Optimized-salad.jpg");
+  background-image: url("../images/mushroom.jpg");
   background-size: cover;
   background-position: center 100%;
   background-repeat: no-repeat;
@@ -150,7 +150,7 @@ body {
   padding: .25rem;
   font-weight: bold;
   font-size: 15pt;
-  color: #fff;
+  color: rgba(255,255,255,.5);
   background-color: transparent;
   border-bottom: .1rem solid transparent;
 }
