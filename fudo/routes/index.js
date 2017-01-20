@@ -151,14 +151,39 @@ module.exports = function(passport){
     });
   });
 
+  /* GET EditProfile page */
+  router.get('/editprofile', checkLoggedIn, isAuthenticated, function(req, res) {
+    console.log(chalk.yellow('\nEditProfile page accessed.\n'));
+    // Display the index page with any flash message, if any
+    Post.find({}, function(err, posts) {
+     var context = {
+       title: 'fudo',
+       posts,
+       message: req.flash('message'),
+       isLoggedIn,
+       username: req.user.username,
+       name: req.user.name,
+       about: req.user.about
+     };
+     res.render('editprofile', context);
+    });
+  });
+
+  /* GET user's profile page */
+  //
+  // TODO
+  //
+
   /* POST to addpost */
   router.post('/addpost', function(req, res, next) {
     var postTitle = req.body.postTitle;
     var postAuthor = req.body.postAuthor;
+    var postImage = req.body.postImage;
 
     var newPost = new Post({
       'postTitle': postTitle,
-      'postAuthor': postAuthor
+      'postAuthor': req.user.name,
+      'imageURL': postImage
     });
     
     newPost.save();
