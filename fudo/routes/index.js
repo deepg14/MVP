@@ -145,7 +145,8 @@ module.exports = function(passport){
        message: req.flash('message'),
        isLoggedIn,
        username: req.user.username,
-       name: req.user.name
+       name: req.user.name,
+       about: req.user.about
      };
      res.render('myprofile', context);
     });
@@ -167,6 +168,52 @@ module.exports = function(passport){
      };
      res.render('editprofile', context);
     });
+  });
+
+  /* POST to editprofile */
+  router.post('/editprofile', function(req, res, next) {
+    var name = req.body.name;
+    var username = req.body.username;
+    var about = req.body.about;
+
+    // updates user info
+    User.update({
+      'username': req.user.username
+    }, {
+      $set: {
+        'name': name,
+        'username': username,
+        'about': about
+      }, 
+    }, function(err, result) {
+      if (err) {
+        console.log('An error occured.');
+      }
+    });
+
+    // doesn't work????
+    //
+    // User.findOne({'username': req.user.username}, function(err, user) {
+    // if (err) {
+    //   console.log('\n\nAn error occurred!\n\n');
+    // } 
+    // else {
+    //   if (user) {
+    //     console.log('\n\nFound user.\n\n');
+    //     //user.name = name;
+    //     //user.username = username;
+    //     //user.about = about;
+    //     //user.save();
+    //   } else {
+    //     console.log('\n\nUser not found.\n\n');
+    //   }
+    // }
+  // });
+      
+    console.log('\n\nProfile edited!\n\n');
+
+    // Redirecting back to the root
+    res.redirect('/editprofile');
   });
 
   /* GET user's profile page */
