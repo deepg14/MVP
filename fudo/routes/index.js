@@ -146,7 +146,9 @@ module.exports = function(passport){
        isLoggedIn,
        username: req.user.username,
        name: req.user.name,
-       about: req.user.about
+       about: req.user.about,
+       phone: req.user.phone,
+       email: req.user.email
      };
      res.render('myprofile', context);
     });
@@ -164,7 +166,9 @@ module.exports = function(passport){
        isLoggedIn,
        username: req.user.username,
        name: req.user.name,
-       about: req.user.about
+       about: req.user.about,
+       phone: req.user.phone,
+       email: req.user.email
      };
      res.render('editprofile', context);
     });
@@ -175,6 +179,8 @@ module.exports = function(passport){
     var name = req.body.name;
     var username = req.body.username;
     var about = req.body.about;
+    var phone = req.body.phone;
+    var email = req.body.email;
 
     // updates user info
     User.update({
@@ -183,7 +189,9 @@ module.exports = function(passport){
       $set: {
         'name': name,
         'username': username,
-        'about': about
+        'about': about,
+        'phone': phone,
+        'email': email
       }, 
     }, function(err, result) {
       if (err) {
@@ -245,116 +253,4 @@ module.exports = function(passport){
 
 }
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   // Rendering the index view 
-//   Post.find({}, function(err, posts) {
-//     var context = {
-//       title: 'fudo',
-//       posts
-//     };
-//     res.render('index', context);
-//   });
-  
-// });
 
-// /* POST to addpost */
-// router.post('/addpost', function(req, res, next) {
-//   var postTitle = req.body.postTitle;
-//   var postAuthor = req.body.postAuthor;
-
-//   // TODO: Create a new document with the given username and favorite fruit.
-//   // If the username already exists, then do nothing.
-
-//   var newPost = new Post({
-//      'postTitle': postTitle,
-//      'postAuthor': postAuthor
-//   });
-    
-//   newPost.save();
-    
-//   console.log('\n\nNew post added!\n\n');
-
-//   // Redirecting back to the root
-//   res.redirect('/');
-// });
-
-// /* GET userlist JSON */
-// router.get('/userlist', function(req, res, next) {
-//   // Passing in an empty object to User.find() will return a list of
-//   // all the users.
-//   User.find({}, function(err, users) {
-//     res.send(users);
-//   });
-// });
-
-// /* POST to adduser */
-// router.post('/adduser', function(req, res, next) {
-//   var username = req.body.username;
-//   var userFruit = req.body.userfruit;
-
-//   // TODO: Create a new document with the given username and favorite fruit.
-//   // If the username already exists, then do nothing.
-
-//   var newUser = new User({
-//      'username': username,
-//      'userFruit': userFruit
-//   });
-    
-//   newUser.save();
-    
-//   console.log('\n\nNew user added!\n\n');
-
-//   // Redirecting back to the root
-//   res.redirect('/');
-// });
-
-// /* POST to deleteuser */
-// router.post('/deleteuser', function(req, res, next) {
-//   var username = req.body.username;
-
-//   // TODO: Remove the document from the collection, if it exists.
-//   // Otherwise, let the client know that the user does not exist.
-//   //
-//   // Hint: How can you tell whether User.remove() was successful?
-//   // Look at the second parameter of the callback function passed
-//   // User.remove(). You can get the number of documents deleted
-//   // by the operation.
-
-//   /*
-//   User.remove({'username': username}, function(err, result){
-//     if (err) {
-//       res.send('User does not exist.');
-//     }
-//     else {
-//       res.send(username, " deleted!");
-//     }
-//   })
-//   */
-
-//   res.send('Unimplemented :(');
-// });
-
-// router.get('/findfruit', function(req, res, next) {
-//   var username = req.query.username;
-
-//   // TODO: Check if the user exists. If the user exists, send back
-//   // their favorite fruit. Otherwise, let the client know that the
-//   // username is not in the database.
-//   User.findOne({'username': username}, function(err, users) {
-//     if (err) {
-//       console.log('Error!');
-//       res.send(username + ' is not in the database!');
-//     }
-//     else {
-//       res.send(users[0].userFruit);
-//     }
-//   })
-
-//   //res.send('Unimplemented :(');
-
-//   // If the user does not exist, use this line of code below.
-//   //res.send(username + ' is not in the database!');
-// });
-
-// module.exports = router;

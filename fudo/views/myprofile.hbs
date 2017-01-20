@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Profile Page</title>
+<title>{{ name }}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -22,7 +22,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
+<<<<<<< HEAD
   <span class="w3-left w3-padding">Deep's Dank Food</span>
+=======
+  <span class="w3-left w3-padding">{{ name }}</span>
+>>>>>>> 35ffcaa20b4d36be5274f5ea7c08be20ee83d681
   <a href="javascript:void(0)" class="w3-right w3-btn w3-white" onclick="w3_open()">☰</a>
 </header>
 
@@ -84,11 +88,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h4><b>About</b></h4>
     <img src="../images/deep.jpg" alt="Me" class="w3-image w3-padding-32" width="600" height="650">
     <div class="w3-content w3-justify" style="max-width:600px">
-      <h4>Deep Dankar</h4>
-      <p>Here is a bunch of text about why my restaurant or my food is incredible. Look at all the pretty food pictures in my album above! Wow amazing! I love food!!!!
+      <h4>{{ name }}</h4>
+      <p> {{ about }}
       </p>
-      <p>mail: deepisradical@amazing.com</p>
-      <p>tel: 123.345.5678</p>
+      <p>mail: {{ email }}</p>
+      <p>tel: {{ phone }}</p>
       <hr class="w3-opacity">
       <h4 class="w3-padding-16">Reviews of Restaurant</h4>
       <p class="w3-wide">Quality</p>
