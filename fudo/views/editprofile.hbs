@@ -13,10 +13,16 @@
   </head>
   <body>
     {{> navbar }}
-    {{> side}}
+    {{> side }}
     <div class="newsfeed">
-      <p> Welcome, {{ name }}. </p>
-      <p> {{ about }} </p>
-    </div> 
+      <form name="editprofile" method="post" action="/editprofile" class="editprofile">
+      <ul>
+        <li> Name: <input type="text" value="{{{name}}}" name="name"> </li> 
+        <li> Username: <input type="text" value="{{{username}}}" name="username"> </li> 
+        <li> About Me: <input type="text" value="{{{about}}}" name="about"> </li>
+        <li> <button type="submit">Submit</button> </li>
+      </ul>
+      </form>
+    </div>
   </body>
 </html>

@@ -1,16 +1,22 @@
 <div class="newsfeed">
 
+  {{#if isLoggedIn}}
   <form name="addpost" method="post" action="/addpost" class="addpost">
 
     <ul>
+      <li>Image URL</li>
+      <li><input type="text" placeholder="Image URL" name="postImage"></li>
       <li>Post Title</li>
       <li><input type="text" placeholder="Title" name="postTitle"></li>
-      <li>Post Author</li>
-      <li><input type="text" placeholder="Author" name="postAuthor"></li>
+      <!-- <li>Post Author</li>
+      <li><input type="text" placeholder="Author" name="postAuthor"></li> -->
       <li><button type="submit">Submit</button></li>
     </ul>
 
   </form>
+  {{/if}}
+
+  <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/4/000/142/100/2dc4dcc.jpg">
 
   {{#each posts}} 
     {{> post }}
