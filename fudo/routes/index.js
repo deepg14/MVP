@@ -174,7 +174,37 @@ module.exports = function(passport){
     });
   });
 
+  /* GET editingprofile */
+  router.get('/editingprofile', function(req, res, next) {
+    var name = req.query.name;
+    var username = req.query.username;
+    var about = req.query.about;
+    var phone = req.query.phone;
+    var email = req.query.email;
+
+    User.findOne({'username': req.user.username}, function(err, user) {
+    if (err) {
+      res.send("Your profile couldn't be updated at this time. Please Try again later.");
+    } 
+    else {
+      if (user) {
+        user.name = name;
+        user.username = username;
+        user.about = about;
+        user.phone = phone;
+        user.email = email;
+        user.save();
+        res.send('Updated profile.');
+      } else {
+        res.send("Your profile couldn't be updated at this time. Please Try again later.");
+      }
+    }
+    });
+
+  });
+
   /* POST to editprofile */
+  /* currently unused, was linked to editprofile form */
   router.post('/editprofile', function(req, res, next) {
     var name = req.body.name;
     var username = req.body.username;

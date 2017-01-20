@@ -15,16 +15,17 @@
     {{> navbar }}
     {{> side }}
     <div class="newsfeed">
-      <form name="editprofile" method="post" action="/editprofile" class="editprofile">
+      <!-- <form name="editprofile" method="post" action="/editprofile" class="editprofile"> -->
       <ul>
-        <li> Name: <input type="text" value="{{{name}}}" name="name"> </li> 
-        <li> Username: <input type="text" value="{{{username}}}" name="username"> </li> 
-        <li> About Me: <input type="text" value="{{{about}}}" name="about"> </li>
-        <li> Phone Number: <input type="text" value="{{{phone}}}" name="phone"> </li>
-        <li> Email: <input type="text" value="{{{email}}}" name="email"> </li>
-        <li> <button type="submit">Submit</button> </li>
+        <li> Name: <input type="text" value="{{{name}}}" name="name" class="name"> </li> 
+        <li> Username: <input type="text" value="{{{username}}}" name="username" class="username"> </li> 
+        <li> About Me: <input type="text" value="{{{about}}}" name="about" class="about"> </li>
+        <li> Phone Number: <input type="text" value="{{{phone}}}" name="phone" class="phone"> </li>
+        <li> Email: <input type="text" value="{{{email}}}" name="email" class="email"> </li>
+        <li> <button type="submit" class="editprofile-submit">Submit</button> </li>
+        <li> <p class="editprofile-output"> </p> </li>
       </ul>
-      </form>
+      <!-- </form> -->
     </div>
   </body>
 </html>
