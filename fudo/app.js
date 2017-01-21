@@ -20,6 +20,7 @@ else {
 
 
 // database setup
+//trigger redeploy
 //mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
 
 //Azure database client info
