@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 // database setup
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://fudocollections:2ZmAhPcHiRilVQ37QaH0WRDN1S4zGqTZ1H7ESbRuih2VhEgKfHLs69RDgT8GdBmeIQwsaDjOXg7DVo6upSGmrQ==@fudocollections.documents.azure.com:10250/?ssl=true');
 var connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.on('connected', function() {
