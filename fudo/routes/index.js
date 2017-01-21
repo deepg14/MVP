@@ -71,7 +71,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn
      };
@@ -92,7 +91,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn
      };
@@ -141,7 +139,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn,
        username: req.user.username,
@@ -161,7 +158,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn,
        username: req.user.username,
@@ -255,9 +251,35 @@ module.exports = function(passport){
   });
 
   /* GET user's profile page */
-  //
-  // TODO
-  //
+  router.get('/profile/:id', checkLoggedIn, function(req, res) {
+    var id = req.params.id;
+    console.log(chalk.yellow(id, "'s Profile page accessed.\n"));
+    // Display the index page with any flash message, if any
+    User.findOne({'username': id}, function(err, userRequested) {
+    if (err) {
+      console.log('An error occurred!');
+    } else {
+      if (userRequested) {
+        console.log(userRequested);
+        Post.find({}, function(err, posts) {
+          var context = {
+            title: 'fudo',
+            message: req.flash('message'),
+            isLoggedIn,
+            username: userRequested.username,
+            name: userRequested.name,
+            about: userRequested.about,
+            phone: userRequested.phone,
+            email: userRequested.email
+          };
+          res.render('myprofile', context);
+        });
+      } else {
+        res.render('error', { message: "Page not found." });
+      }
+    }
+    });
+  });
 
   /* POST to addpost */
   router.post('/addpost', function(req, res, next) {
