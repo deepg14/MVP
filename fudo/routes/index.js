@@ -225,19 +225,19 @@ module.exports = function(passport){
       }
     });
 
-    // doesn't work????
+    // doesn't work???? might now
     //
-    // User.findOne({'username': req.user.username}, function(err, user) {
+    // User.findOne({'username': req.user.username}, function(err, userLoggedIn) {
     // if (err) {
     //   console.log('\n\nAn error occurred!\n\n');
     // } 
     // else {
-    //   if (user) {
+    //   if (userLoggedIn) {
     //     console.log('\n\nFound user.\n\n');
-    //     //user.name = name;
-    //     //user.username = username;
-    //     //user.about = about;
-    //     //user.save();
+    //     //userLoggedIn.name = name;
+    //     //userLoggedIn.username = username;
+    //     //userLoggedIn.about = about;
+    //     //userLoggedIn.save();
     //   } else {
     //     console.log('\n\nUser not found.\n\n');
     //   }
@@ -260,20 +260,24 @@ module.exports = function(passport){
       console.log('An error occurred!');
     } else {
       if (userRequested) {
-        console.log(userRequested);
-        Post.find({}, function(err, posts) {
-          var context = {
-            title: 'fudo',
-            message: req.flash('message'),
-            isLoggedIn,
-            username: userRequested.username,
-            name: userRequested.name,
-            about: userRequested.about,
-            phone: userRequested.phone,
-            email: userRequested.email
-          };
-          res.render('myprofile', context);
-        });
+        if (req.user.username === userRequested.username) {
+          res.redirect('/myprofile');
+        }
+        else {
+          Post.find({}, function(err, posts) {
+            var context = {
+              title: 'fudo',
+              message: req.flash('message'),
+              isLoggedIn,
+              username: userRequested.username,
+              name: userRequested.name,
+              about: userRequested.about,
+              phone: userRequested.phone,
+              email: userRequested.email
+            };
+            res.render('myprofile', context);
+          });
+        }
       } else {
         res.render('error', { message: "Page not found." });
       }
