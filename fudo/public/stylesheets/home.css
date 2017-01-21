@@ -163,10 +163,12 @@ body {
   }
 }
 
-@media (min-width: 90em) {
+@media (min-width: 100em) {
   .masthead,
   .mastfoot,
   .cover-container {
     width: 42rem;
   }
 }
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
