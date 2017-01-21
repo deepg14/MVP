@@ -71,7 +71,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn
      };
@@ -92,7 +91,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn
      };
@@ -141,7 +139,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn,
        username: req.user.username,
@@ -161,7 +158,6 @@ module.exports = function(passport){
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
-       posts,
        message: req.flash('message'),
        isLoggedIn,
        username: req.user.username,
@@ -229,19 +225,19 @@ module.exports = function(passport){
       }
     });
 
-    // doesn't work????
+    // doesn't work???? might now
     //
-    // User.findOne({'username': req.user.username}, function(err, user) {
+    // User.findOne({'username': req.user.username}, function(err, userLoggedIn) {
     // if (err) {
     //   console.log('\n\nAn error occurred!\n\n');
     // } 
     // else {
-    //   if (user) {
+    //   if (userLoggedIn) {
     //     console.log('\n\nFound user.\n\n');
-    //     //user.name = name;
-    //     //user.username = username;
-    //     //user.about = about;
-    //     //user.save();
+    //     //userLoggedIn.name = name;
+    //     //userLoggedIn.username = username;
+    //     //userLoggedIn.about = about;
+    //     //userLoggedIn.save();
     //   } else {
     //     console.log('\n\nUser not found.\n\n');
     //   }
@@ -255,9 +251,39 @@ module.exports = function(passport){
   });
 
   /* GET user's profile page */
-  //
-  // TODO
-  //
+  router.get('/profile/:id', checkLoggedIn, function(req, res) {
+    var id = req.params.id;
+    console.log(chalk.yellow(id, "'s Profile page accessed.\n"));
+    // Display the index page with any flash message, if any
+    User.findOne({'username': id}, function(err, userRequested) {
+    if (err) {
+      console.log('An error occurred!');
+    } else {
+      if (userRequested) {
+        if (req.user.username === userRequested.username) {
+          res.redirect('/myprofile');
+        }
+        else {
+          Post.find({}, function(err, posts) {
+            var context = {
+              title: 'fudo',
+              message: req.flash('message'),
+              isLoggedIn,
+              username: userRequested.username,
+              name: userRequested.name,
+              about: userRequested.about,
+              phone: userRequested.phone,
+              email: userRequested.email
+            };
+            res.render('myprofile', context);
+          });
+        }
+      } else {
+        res.render('error', { title: 'fudo', message: "Page not found." });
+      }
+    }
+    });
+  });
 
   /* POST to addpost */
   router.post('/addpost', function(req, res, next) {
