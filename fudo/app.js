@@ -8,8 +8,26 @@ var mongoose = require('mongoose');
 
 var app = express();
 
+accessing ports
+if (process.env.NODE_ENV == "production") {
+  //in Azure cloud
+  app.listen(process.env.PORT);
+}
+else {
+  // in local
+  app.listen(3000);
+}
+
+
 // database setup
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+//mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+
+//Azure database client info
+var mongoClient = require("mongodb").MongoClient;
+MongoClient.connect("mongodb://fudocollections:2ZmAhPcHiRilVQ37QaH0WRDN1S4zGqTZ1H7ESbRuih2VhEgKfHLs69RDgT8GdBmeIQwsaDjOXg7DVo6upSGmrQ==@fudocollections.documents.azure.com:10250/Login Info?ssl=true", function (err, db) {
+  db.close();
+});
+
 var connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.on('connected', function() {
