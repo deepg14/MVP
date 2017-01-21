@@ -279,7 +279,7 @@ module.exports = function(passport){
           });
         }
       } else {
-        res.render('error', { message: "Page not found." });
+        res.render('error', { title: 'fudo', message: "Page not found." });
       }
     }
     });

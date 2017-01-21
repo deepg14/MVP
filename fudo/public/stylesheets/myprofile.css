@@ -1,3 +1,4 @@
+
 /*Nothing here yet*/
 .w3-left {
 	font-size: 25pt;
@@ -30,6 +31,11 @@
   margin-bottom: 2rem;
   font-size: 25pt;
   font-weight: bold;
+}
+
+.masthead-brand a {
+  text-decoration: none;
+  color: #000000;
 }
 
 .nav-masthead .nav-link {

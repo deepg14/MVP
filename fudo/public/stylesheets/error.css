@@ -162,6 +162,11 @@ body {
   font-size: 25pt;
 }
 
+.masthead-brand a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .nav-masthead .nav-link {
   padding: .25rem;
   font-weight: bold;
