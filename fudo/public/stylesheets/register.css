@@ -217,10 +217,14 @@ body {
 /*form styles*/
 #msform {
   width: 400px;
-  margin: 50px auto;
+  margin: -20px 0 0 0;
+  margin-right: 25%;
+  margin-left: 35%;
   text-align: center;
   position: relative;
   height:440px;
+  top: 0;
+  z-index: 9999;
 }
 #msform fieldset {
   background: white;
@@ -248,8 +252,8 @@ body {
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  font-family: montserrat;
-  color: #000033;
+  font-family: normal;
+  color: #fff;
   font-size: 13px;
 }
 
