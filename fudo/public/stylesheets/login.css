@@ -72,13 +72,13 @@ Here are the real colors for the buttons
 .btn-primary { 
   font: normal;
   font-family: normal;
-  background-color: #000033; 
-  background-image: -moz-linear-gradient(top, #fff, #000033); 
-  background-image: -ms-linear-gradient(top, #fff, #000033); 
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000033), to(#4a77d4));
-  background-image: -webkit-linear-gradient(top, #fff, #000033); 
-  background-image: -o-linear-gradient(top, #fff, #000033); 
-  background-image: linear-gradient(top, #fff, #000033); 
+  background-color: #111369; 
+  background-image: -moz-linear-gradient(top, #fff, #111369); 
+  background-image: -ms-linear-gradient(top, #fff, #111369); 
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#111369), to(#4a77d4));
+  background-image: -webkit-linear-gradient(top, #fff, #111369); 
+  background-image: -o-linear-gradient(top, #fff, #111369); 
+  background-image: linear-gradient(top, #fff, #111369); 
   background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#6eb6de, endColorstr=#4a77d4, GradientType=0);  
   border: 1px solid transparent; 
   text-shadow: 1px 1px 1px rgba(0,0,0,0.4); 
@@ -87,7 +87,7 @@ Here are the real colors for the buttons
 
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { 
   filter: none; 
-  background-color: #000033; 
+  background-color: #111369; 
 }
 .btn-block { 
   width: 100%; 
@@ -190,7 +190,7 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 48em) {
+@media (min-width: 10em) {
   .masthead-brand {
     float: left;
   }
