@@ -173,7 +173,6 @@ module.exports = function(passport){
   /* GET editingprofile */
   router.get('/editingprofile', function(req, res, next) {
     var name = req.query.name;
-    var username = req.query.username;
     var about = req.query.about;
     var phone = req.query.phone;
     var email = req.query.email;
@@ -185,7 +184,6 @@ module.exports = function(passport){
     else {
       if (user) {
         user.name = name;
-        user.username = username;
         user.about = about;
         user.phone = phone;
         user.email = email;
