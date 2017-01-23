@@ -15,6 +15,7 @@
     "express": "~4.13.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.2",
+    "formidable": "^1.1.1",
     "mongoose": "^4.7.7",
     "morgan": "~1.6.1",
     "passport": "^0.3.2",
