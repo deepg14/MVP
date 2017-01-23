@@ -265,7 +265,6 @@ module.exports = function(passport){
   /* POST to addpost */
   router.post('/addpost', function(req, res, next) {
     var postTitle = req.body.postTitle;
-    var postAuthor = req.body.postAuthor;
     var postImage = req.body.postImage;
 
     var newPost = new Post({
