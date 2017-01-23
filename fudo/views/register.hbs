@@ -26,12 +26,18 @@
     <fieldset>
       <h2 class="fs-title">Create your account</h2>
       <h3 class="fs-subtitle"></h3>
-      <input type="text" name="name" placeholder="Name" required="required" />
-      <input type="text" name="username" placeholder="Username" required="required" />
-      <input type="password" name="password" placeholder="Password" required="required" />
-      <input type="text" name="email" placeholder="Email" />
-      <input type="text" name="phone" placeholder="Phone Number" />
-      <input type="button" name="next" class="next action-button" value="Next" />
+      <ul>
+      <li> <input type="text" name="name" placeholder="Name" required="required" /> </li>
+      <li> <input type="text" name="username" placeholder="Username" class="username" required="required" /> </li>
+      <li> <p class="username-output output"></p> </li>
+      <li> <input type="password" name="password" placeholder="Password" class="password" required="required" /> </li>
+      <li> <p class="password-output output"></p> </li>
+      <li> <input type="password" name="cpassword" placeholder="Confirm Password" class="cpassword" required="required" /> </li>
+      <li> <p class="cpassword-output output"></p> </li>
+      <li> <input type="text" name="email" placeholder="Email" /> </li>
+      <li> <input type="text" name="phone" placeholder="Phone Number" /> </li>
+      <li> <input type="button" name="next" class="next action-button" value="Next" /> </li>
+      </ul>
     </fieldset>
     <fieldset>
       <h2 class="fs-title">Tell us a bit more about yourself!</h2>
