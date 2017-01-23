@@ -38,8 +38,12 @@ body,h1,h2,h3,h4,h5 {font-family: Normal}
           <img id="profilepic" src="../images/eggs.jpg" />
             <h2>{{ name }}</h2>
             <p>{{ about }}</p> 
+            {{#if emailExists }}
             <p>Mail: {{ email }}</p>
+            {{/if}}
+            {{#if phoneExists }}
             <p>Tel: {{ phone }}</p>
+            {{/if}}
             <p> <a href='/editprofile'> Edit Profile </a> </p>
             <ul id="service-icons">
               <li class="services-design">Design</li>

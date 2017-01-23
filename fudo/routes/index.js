@@ -135,7 +135,11 @@ module.exports = function(passport){
   /* GET MyProfile page. */
   router.get('/myprofile', checkLoggedIn, isAuthenticated, function(req, res) {
     console.log(chalk.yellow('\nProfile page accessed.\n'));
-    // Display the index page with any flash message, if any
+
+    var phoneExists = (req.user.phone.length > 0);
+    var emailExists = (req.user.email.length > 0);
+
+    // Display the myprofile page with any flash message, if any
     Post.find({}, function(err, posts) {
      var context = {
        title: 'fudo',
@@ -145,7 +149,9 @@ module.exports = function(passport){
        name: req.user.name,
        about: req.user.about,
        phone: req.user.phone,
-       email: req.user.email
+       email: req.user.email,
+       phoneExists: phoneExists,
+       emailExists: emailExists
      };
      res.render('myprofile', context);
     });
