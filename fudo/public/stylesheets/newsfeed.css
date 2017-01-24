@@ -20,3 +20,8 @@ form.addpost li {
 	font-size: .8em;
 	display: block;
 }
+
+.hidden {
+  display: none;
+}
+
