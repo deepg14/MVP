@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   $('#upload-btn').on('click', function() {
-    console.log('\n\nUpload button clicked.\n\n');
     $('#upload-input').click();
     $('.progress-bar').text('0%');
     $('.progress-bar').width('0%');
@@ -9,8 +8,6 @@ $(document).ready(function() {
   });
 
   $('#upload-input').on('change', function(){
-
-    console.log('\n\nFile uploaded.\n\n');
 
     var files = $(this).get(0).files;
 
@@ -34,7 +31,8 @@ $(document).ready(function() {
         processData: false,
         contentType: false,
         success: function(data){
-          console.log('upload successful!\n' + data);
+          console.log('\n\nupload successful!\n' + data);
+          $('#postImage').val(data);
         },
         xhr: function() {
           // create an XMLHttpRequest

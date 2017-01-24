@@ -284,13 +284,15 @@ module.exports = function(passport){
     res.redirect('/');
   });
 
+  /* POST to upload */
+  /* upload file */
   router.post('/upload', function(req, res){
 
-    console.log('\n\n:OOOO\n\n');
+    var filePath;
 
     // create an incoming form object
     var form = new formidable.IncomingForm({
-      uploadDir: path.join(__dirname, '..', '/uploads')
+      uploadDir: path.join(__dirname, '..', 'public/uploads')
     });
 
     console.log(form.uploadDir);
@@ -299,9 +301,15 @@ module.exports = function(passport){
     form.multiples = false;
 
     // every time a file has been uploaded successfully,
-    // rename it to it's orignal name
+    // rename it to a file with original file extension
     form.on('file', function(field, file) {
-      fs.rename(file.path, path.join(form.uploadDir, file.name));
+      var fileExtension = file.name.split('.').pop();
+      fs.rename(file.path, file.path + "." + fileExtension);
+      var completeFilePath = file.path + "." + fileExtension;
+      var fileName = completeFilePath.split('uploads').pop();
+      console.log('\n\n' + fileName + '\n\n');
+      filePath = path.join('..', '/uploads', fileName);
+      console.log('\n\n' + filePath + '\n\n');
     });
 
     // log any errors that occur
@@ -309,9 +317,9 @@ module.exports = function(passport){
       console.log('An error has occured: \n' + err);
     });
 
-    // once all the files have been uploaded, send a response to the client
+    // once the file has been uploaded, send the location of the file back
     form.on('end', function() {
-      res.end('success');
+      res.send(filePath);
     });
 
     // parse the incoming request containing the form data

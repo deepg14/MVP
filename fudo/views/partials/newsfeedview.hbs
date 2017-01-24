@@ -1,10 +1,17 @@
 <div class="newsfeed">
 
-  <div class="progress">
-    <div class="progress-bar" role="progressbar"></div>
-  </div>
-  <button id="upload-btn" class="btn btn-lg upload-btn" type="button">Upload File</button>
-  <input id="upload-input" type="file" name="uploads[]">
+  {{#if isLoggedIn }}
+  <form name="addpost" method="post" action="/addpost" class="addpost">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"></div>
+    </div>
+    <button id="upload-btn" class="btn btn-lg upload-btn" type="button">Upload File</button>
+    <input id="upload-input" type="file" name="uploads[]">
+    <input type="text" id="postImage" name="postImage">
+    <input type="text" id="postTitle" placeholder="Title" name="postTitle">
+    <button type="submit">Post</button>
+  </form>
+  {{/if}}
 
   {{#if isLoggedIn}}
   <form name="addpost" method="post" action="/addpost" class="addpost">
